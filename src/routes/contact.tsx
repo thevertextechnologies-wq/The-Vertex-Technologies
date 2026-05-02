@@ -1,0 +1,252 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { z } from "zod";
+import { CheckCircle2, Mail, Phone, MapPin } from "lucide-react";
+import PageLayout from "@/components/PageLayout";
+import PageBanner from "@/components/PageBanner";
+import bannerContact from "@/assets/banner-contact.jpg";
+import { Reveal } from "@/components/Reveal";
+
+export const Route = createFileRoute("/contact")({
+  head: () => ({
+    meta: [
+      { title: "Contact — The Vertex Technologies" },
+      {
+        name: "description",
+        content:
+          "Let's build your future-ready business. Share your goals and get a thoughtful, actionable plan from the Vertex team.",
+      },
+      { property: "og:title", content: "Contact — The Vertex Technologies" },
+      {
+        property: "og:description",
+        content: "Connect with Vertex for AI, automation and growth strategy.",
+      },
+    ],
+  }),
+  component: ContactPage,
+});
+
+const schema = z.object({
+  name: z.string().trim().min(1, "Name required").max(100),
+  email: z.string().trim().email("Invalid email").max(200),
+  company: z.string().trim().min(1, "Company required").max(150),
+  website: z.string().trim().max(200).optional().or(z.literal("")),
+  goal: z.string().trim().min(10, "Tell us a little more").max(2000),
+});
+
+function ContactPage() {
+  const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
+    const parsed = schema.safeParse(data);
+    if (!parsed.success) {
+      const errs: Record<string, string> = {};
+      parsed.error.issues.forEach((i) => {
+        if (i.path[0]) errs[i.path[0] as string] = i.message;
+      });
+      setErrors(errs);
+      return;
+    }
+    setErrors({});
+    setSubmitted(true);
+  }
+
+  return (
+    <PageLayout>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 gradient-mesh opacity-60" aria-hidden />
+        <div className="container-x relative pt-16 md:pt-24 pb-20">
+          <Reveal>
+            <span className="pill">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-orange)]" />
+              Contact
+            </span>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h1 className="text-display text-[clamp(2.6rem,7vw,5.2rem)] mt-5 max-w-4xl text-balance">
+              Let’s build your future‑ready business.
+            </h1>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl">
+              Every transformation starts with a conversation. Share your needs and
+              our team responds with a thoughtful, actionable plan — not a generic
+              reply.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="pb-24">
+        <div className="container-x grid lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <form
+                onSubmit={handleSubmit}
+                className="card-tile p-8 md:p-10 bg-card"
+                noValidate
+              >
+                {submitted ? (
+                  <div className="text-center py-12">
+                    <CheckCircle2 className="h-12 w-12 mx-auto text-[var(--brand-green)]" />
+                    <h3 className="text-display text-3xl mt-5">Message received.</h3>
+                    <p className="mt-3 text-muted-foreground max-w-md mx-auto">
+                      Thanks for reaching out. A member of the Vertex team will get back
+                      to you with a tailored response.
+                    </p>
+                  </div>
+                ) : (
+                  <>
+                    <h2 className="text-display text-3xl font-bold">Tell us about your project</h2>
+                    <p className="mt-2 text-muted-foreground">
+                      We typically respond within one business day.
+                    </p>
+
+                    <div className="mt-8 grid sm:grid-cols-2 gap-5">
+                      <Field
+                        label="Name"
+                        name="name"
+                        placeholder="Jane Doe"
+                        error={errors.name}
+                      />
+                      <Field
+                        label="Email"
+                        name="email"
+                        type="email"
+                        placeholder="jane@company.com"
+                        error={errors.email}
+                      />
+                      <Field
+                        label="Company"
+                        name="company"
+                        placeholder="Acme Inc."
+                        error={errors.company}
+                      />
+                      <Field
+                        label="Website (optional)"
+                        name="website"
+                        placeholder="acme.com"
+                        error={errors.website}
+                      />
+                      <Field
+                        label="Your Goal"
+                        name="goal"
+                        textarea
+                        placeholder="What outcome would make this engagement a success?"
+                        error={errors.goal}
+                        className="sm:col-span-2"
+                      />
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-3">
+                      <button type="submit" className="btn-primary">
+                        Send Your Message →
+                      </button>
+                      <Link to="/book-a-call" className="btn-outline">
+                        Book a Strategy Call
+                      </Link>
+                    </div>
+                  </>
+                )}
+              </form>
+            </Reveal>
+          </div>
+
+          <div className="lg:col-span-5 space-y-5">
+            <Reveal>
+              <div className="card-tile p-7 bg-card">
+                <h3 className="font-display text-xl font-bold">Why connect with us?</h3>
+                <ul className="mt-4 space-y-3 text-sm">
+                  {[
+                    "Personalized guidance aligned with your objectives",
+                    "Clear, practical steps for growth and efficiency",
+                    "Expert-driven insights in AI, marketing and systems",
+                  ].map((t) => (
+                    <li key={t} className="flex items-start gap-2">
+                      <CheckCircle2 className="h-5 w-5 text-[var(--brand-green)] mt-0.5 shrink-0" />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.05}>
+              <div className="card-tile p-7 bg-card space-y-3">
+                <Item icon={<Mail className="h-4 w-4" />} label="hello@thevertextechnologies.com" />
+                <Item icon={<Phone className="h-4 w-4" />} label="Available on request" />
+                <Item icon={<MapPin className="h-4 w-4" />} label="Working with clients globally" />
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div
+                className="rounded-3xl p-7 text-[var(--cream)]"
+                style={{
+                  background:
+                    "linear-gradient(135deg, var(--ink), color-mix(in oklab, var(--brand-blue) 35%, var(--ink)))",
+                }}
+              >
+                <h3 className="font-display text-2xl font-bold">
+                  Want immediate results?
+                </h3>
+                <p className="mt-2 text-white/70 text-sm">
+                  Book a focused strategy call and start accelerating growth.
+                </p>
+                <Link to="/book-a-call" className="btn-accent mt-5">
+                  Book Your Call →
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+    </PageLayout>
+  );
+}
+
+function Item({ icon, label }: { icon: React.ReactNode; label: string }) {
+  return (
+    <div className="flex items-center gap-3 text-sm">
+      <span className="h-8 w-8 rounded-lg bg-muted flex items-center justify-center">
+        {icon}
+      </span>
+      {label}
+    </div>
+  );
+}
+
+function Field({
+  label,
+  name,
+  placeholder,
+  type = "text",
+  textarea,
+  error,
+  className = "",
+}: {
+  label: string;
+  name: string;
+  placeholder?: string;
+  type?: string;
+  textarea?: boolean;
+  error?: string;
+  className?: string;
+}) {
+  const cls =
+    "mt-1.5 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-transparent transition-all";
+  return (
+    <label className={`block ${className}`}>
+      <span className="text-sm font-semibold">{label}</span>
+      {textarea ? (
+        <textarea name={name} placeholder={placeholder} rows={5} className={cls} />
+      ) : (
+        <input type={type} name={name} placeholder={placeholder} className={cls} />
+      )}
+      {error && <span className="text-xs text-[var(--brand-red)] mt-1 block">{error}</span>}
+    </label>
+  );
+}
