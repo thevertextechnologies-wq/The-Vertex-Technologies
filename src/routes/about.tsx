@@ -8,22 +8,6 @@ import { SectionHeader } from "@/components/SectionHeader";
 import CTASection from "@/components/CTASection";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — The Vertex Technologies" },
-      {
-        name: "description",
-        content:
-          "Vertex is an AI-driven growth and transformation company helping organizations scale through intelligent systems and strategic consulting.",
-      },
-      { property: "og:title", content: "About — The Vertex Technologies" },
-      {
-        property: "og:description",
-        content:
-          "Engineering intelligent growth for modern businesses. Discover our vision, approach and what we do.",
-      },
-    ],
-  }),
   component: AboutPage,
 });
 

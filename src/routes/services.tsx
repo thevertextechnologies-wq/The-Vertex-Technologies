@@ -8,22 +8,6 @@ import { SectionHeader } from "@/components/SectionHeader";
 import CTASection from "@/components/CTASection";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — The Vertex Technologies" },
-      {
-        name: "description",
-        content:
-          "AI automation, digital marketing systems, entrepreneurship and business growth consulting — engineered for measurable results.",
-      },
-      { property: "og:title", content: "Services — The Vertex Technologies" },
-      {
-        property: "og:description",
-        content:
-          "Transform your business with AI, automation and strategic growth services.",
-      },
-    ],
-  }),
   component: ServicesPage,
 });
 
@@ -123,17 +107,11 @@ function ServicesPage() {
       />
 
       {services.map((s, idx) => (
-        <section
-          key={s.title}
-          className={`py-20 ${idx % 2 === 1 ? "bg-[var(--surface)]" : ""}`}
-        >
+        <section key={s.title} className={`py-20 ${idx % 2 === 1 ? "bg-[var(--surface)]" : ""}`}>
           <div className="container-x grid lg:grid-cols-12 gap-10">
             <div className="lg:col-span-5">
               <Reveal>
-                <div
-                  className="h-14 w-14 rounded-2xl flex items-center justify-center"
-                  style={{ background: s.soft }}
-                >
+                <div className="h-14 w-14 rounded-2xl flex items-center justify-center" style={{ background: s.soft }}>
                   <s.icon className="h-7 w-7" style={{ color: s.color }} />
                 </div>
               </Reveal>
@@ -152,38 +130,22 @@ function ServicesPage() {
 
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
               <Stagger className="card-tile p-7 bg-card">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  What we offer
-                </p>
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">What we offer</p>
                 <ul className="mt-4 space-y-3 text-sm">
                   {s.offer.map((o) => (
-                    <StaggerItem
-                      key={o}
-                      className="flex items-start gap-2 leading-relaxed"
-                    >
-                      <span
-                        className="h-1.5 w-1.5 rounded-full mt-2 shrink-0"
-                        style={{ background: s.color }}
-                      />
+                    <StaggerItem key={o} className="flex items-start gap-2 leading-relaxed">
+                      <span className="h-1.5 w-1.5 rounded-full mt-2 shrink-0" style={{ background: s.color }} />
                       {o}
                     </StaggerItem>
                   ))}
                 </ul>
               </Stagger>
               <Stagger className="card-tile p-7 bg-card">
-                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  Why it matters
-                </p>
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Why it matters</p>
                 <ul className="mt-4 space-y-3 text-sm">
                   {s.why.map((o) => (
-                    <StaggerItem
-                      key={o}
-                      className="flex items-start gap-2 leading-relaxed"
-                    >
-                      <span
-                        className="h-1.5 w-1.5 rounded-full mt-2 shrink-0"
-                        style={{ background: s.color }}
-                      />
+                    <StaggerItem key={o} className="flex items-start gap-2 leading-relaxed">
+                      <span className="h-1.5 w-1.5 rounded-full mt-2 shrink-0" style={{ background: s.color }} />
                       {o}
                     </StaggerItem>
                   ))}

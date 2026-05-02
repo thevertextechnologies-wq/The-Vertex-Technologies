@@ -8,22 +8,6 @@ import { SectionHeader } from "@/components/SectionHeader";
 import CTASection from "@/components/CTASection";
 
 export const Route = createFileRoute("/ai-solutions")({
-  head: () => ({
-    meta: [
-      { title: "AI Solutions — The Vertex Technologies" },
-      {
-        name: "description",
-        content:
-          "Intelligent AI agents, machine learning, predictive analytics and cognitive automation — engineered to deliver autonomous business systems.",
-      },
-      { property: "og:title", content: "AI Solutions — The Vertex Technologies" },
-      {
-        property: "og:description",
-        content:
-          "Transform your business with intelligent AI systems built for measurable impact.",
-      },
-    ],
-  }),
   component: AISolutionsPage,
 });
 

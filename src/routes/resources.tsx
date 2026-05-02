@@ -1,28 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, BookOpen, Wrench } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
-import PageBanner from "@/components/PageBanner";
-import bannerResources from "@/assets/banner-resources.jpg";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 import { SectionHeader } from "@/components/SectionHeader";
 import CTASection from "@/components/CTASection";
 
 export const Route = createFileRoute("/resources")({
-  head: () => ({
-    meta: [
-      { title: "Resources — The Vertex Technologies" },
-      {
-        name: "description",
-        content:
-          "Expert insights, tools and guides for business growth — covering AI, automation, marketing and operational systems.",
-      },
-      { property: "og:title", content: "Resources — The Vertex Technologies" },
-      {
-        property: "og:description",
-        content: "Frameworks, playbooks and tools to scale faster.",
-      },
-    ],
-  }),
   component: ResourcesPage,
 });
 
@@ -56,7 +39,7 @@ const guides = [
 const tools = [
   {
     title: "AI Readiness Assessment",
-    body: "Evaluate your organization’s readiness to implement AI-powered systems.",
+    body: "Evaluate your organization's readiness to implement AI-powered systems.",
     color: "var(--brand-red)",
   },
   {
@@ -105,30 +88,18 @@ function ResourcesPage() {
 
       <section className="py-20">
         <div className="container-x">
-          <SectionHeader
-            eyebrow="Featured guides & playbooks"
-            title="Frameworks built from real engagements."
-            intro=""
-          />
+          <SectionHeader eyebrow="Featured guides & playbooks" title="Frameworks built from real engagements." intro="" />
           <Stagger className="mt-12 grid md:grid-cols-2 gap-5">
             {guides.map((g) => (
               <StaggerItem key={g.title}>
-                <Link
-                  to="/contact"
-                  className="block card-tile p-7 bg-card group h-full"
-                >
+                <Link to="/contact" className="block card-tile p-7 bg-card group h-full">
                   <div className="flex items-center gap-2 mb-4">
                     <BookOpen className="h-4 w-4" style={{ color: g.color }} />
-                    <span
-                      className="text-xs font-semibold uppercase tracking-[0.16em]"
-                      style={{ color: g.color }}
-                    >
+                    <span className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: g.color }}>
                       {g.tag}
                     </span>
                   </div>
-                  <h3 className="font-display text-2xl font-bold leading-snug">
-                    {g.title}
-                  </h3>
+                  <h3 className="font-display text-2xl font-bold leading-snug">{g.title}</h3>
                   <p className="mt-3 text-muted-foreground">{g.body}</p>
                   <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold underline-grow">
                     Request guide <ArrowUpRight className="h-4 w-4" />
@@ -142,17 +113,12 @@ function ResourcesPage() {
 
       <section className="py-20 bg-[var(--surface)]">
         <div className="container-x">
-          <SectionHeader
-            eyebrow="Tools & templates"
-            title="Use what we use to build growth systems."
-          />
+          <SectionHeader eyebrow="Tools & templates" title="Use what we use to build growth systems." />
           <Stagger className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {tools.map((t) => (
               <StaggerItem key={t.title} className="card-tile p-6 bg-card h-full">
                 <Wrench className="h-5 w-5" style={{ color: t.color }} />
-                <p className="mt-4 font-display text-lg font-bold leading-tight">
-                  {t.title}
-                </p>
+                <p className="mt-4 font-display text-lg font-bold leading-tight">{t.title}</p>
                 <p className="mt-2 text-sm text-muted-foreground">{t.body}</p>
               </StaggerItem>
             ))}

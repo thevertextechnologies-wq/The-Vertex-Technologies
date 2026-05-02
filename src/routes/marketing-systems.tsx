@@ -1,14 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  Palette,
-  Video,
-  PenLine,
-  Share2,
-  Megaphone,
-  Search,
-  Mail,
-  BarChart3,
-} from "lucide-react";
+import { Palette, Video, PenLine, Share2, Megaphone, Search, Mail, BarChart3 } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
 import PageBanner from "@/components/PageBanner";
 import bannerMarketing from "@/assets/banner-marketing.jpg";
@@ -17,21 +8,6 @@ import { SectionHeader } from "@/components/SectionHeader";
 import CTASection from "@/components/CTASection";
 
 export const Route = createFileRoute("/marketing-systems")({
-  head: () => ({
-    meta: [
-      { title: "Marketing Systems — The Vertex Technologies" },
-      {
-        name: "description",
-        content:
-          "Digital marketing services that drive measurable growth — branding, content, paid, SEO, social and analytics under one system.",
-      },
-      { property: "og:title", content: "Marketing Systems — The Vertex Technologies" },
-      {
-        property: "og:description",
-        content: "Performance marketing systems engineered for predictable growth.",
-      },
-    ],
-  }),
   component: MarketingPage,
 });
 
@@ -124,10 +100,7 @@ function MarketingPage() {
                   >
                     <s.icon className="h-6 w-6" style={{ color: s.color }} />
                   </div>
-                  <span
-                    className="text-xs uppercase tracking-[0.16em] font-semibold"
-                    style={{ color: s.color }}
-                  >
+                  <span className="text-xs uppercase tracking-[0.16em] font-semibold" style={{ color: s.color }}>
                     Service
                   </span>
                 </div>
@@ -135,18 +108,11 @@ function MarketingPage() {
                 <p className="mt-3 text-muted-foreground leading-relaxed">{s.body}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {s.benefits.map((b) => (
-                    <span
-                      key={b}
-                      className="text-xs px-2.5 py-1 rounded-full border border-border bg-muted"
-                    >
-                      {b}
-                    </span>
+                    <span key={b} className="text-xs px-2.5 py-1 rounded-full border border-border bg-muted">{b}</span>
                   ))}
                 </div>
                 <p className="mt-5 text-xs text-muted-foreground">
-                  <span className="uppercase tracking-[0.16em] font-semibold mr-2">
-                    Deliverables
-                  </span>
+                  <span className="uppercase tracking-[0.16em] font-semibold mr-2">Deliverables</span>
                   {s.deliverables}
                 </p>
               </StaggerItem>
@@ -160,15 +126,12 @@ function MarketingPage() {
           <SectionHeader
             eyebrow="Why choose Vertex"
             title="Results matched with creativity."
-            intro="Every strategy is backed by data, every campaign has a clear goal, every solution is tailored. We don’t just run campaigns — we build systems that consistently drive growth."
+            intro="Every strategy is backed by data, every campaign has a clear goal, every solution is tailored. We don't just run campaigns — we build systems that consistently drive growth."
           />
         </div>
       </section>
 
-      <CTASection
-        eyebrow="Build a growth system"
-        title="Marketing that produces predictable revenue."
-      />
+      <CTASection eyebrow="Build a growth system" title="Marketing that produces predictable revenue." />
     </PageLayout>
   );
 }

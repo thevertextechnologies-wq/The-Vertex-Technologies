@@ -3,26 +3,9 @@ import { useState } from "react";
 import { z } from "zod";
 import { CheckCircle2, Mail, Phone, MapPin } from "lucide-react";
 import PageLayout from "@/components/PageLayout";
-import PageBanner from "@/components/PageBanner";
-import bannerContact from "@/assets/banner-contact.jpg";
 import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — The Vertex Technologies" },
-      {
-        name: "description",
-        content:
-          "Let's build your future-ready business. Share your goals and get a thoughtful, actionable plan from the Vertex team.",
-      },
-      { property: "og:title", content: "Contact — The Vertex Technologies" },
-      {
-        property: "og:description",
-        content: "Connect with Vertex for AI, automation and growth strategy.",
-      },
-    ],
-  }),
   component: ContactPage,
 });
 
@@ -67,14 +50,13 @@ function ContactPage() {
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="text-display text-[clamp(2.6rem,7vw,5.2rem)] mt-5 max-w-4xl text-balance">
-              Let’s build your future‑ready business.
+              Let's build your future‑ready business.
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl">
               Every transformation starts with a conversation. Share your needs and
-              our team responds with a thoughtful, actionable plan — not a generic
-              reply.
+              our team responds with a thoughtful, actionable plan — not a generic reply.
             </p>
           </Reveal>
         </div>
@@ -84,11 +66,7 @@ function ContactPage() {
         <div className="container-x grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-7">
             <Reveal>
-              <form
-                onSubmit={handleSubmit}
-                className="card-tile p-8 md:p-10 bg-card"
-                noValidate
-              >
+              <form onSubmit={handleSubmit} className="card-tile p-8 md:p-10 bg-card" noValidate>
                 {submitted ? (
                   <div className="text-center py-12">
                     <CheckCircle2 className="h-12 w-12 mx-auto text-[var(--brand-green)]" />
@@ -101,36 +79,13 @@ function ContactPage() {
                 ) : (
                   <>
                     <h2 className="text-display text-3xl font-bold">Tell us about your project</h2>
-                    <p className="mt-2 text-muted-foreground">
-                      We typically respond within one business day.
-                    </p>
+                    <p className="mt-2 text-muted-foreground">We typically respond within one business day.</p>
 
                     <div className="mt-8 grid sm:grid-cols-2 gap-5">
-                      <Field
-                        label="Name"
-                        name="name"
-                        placeholder="Jane Doe"
-                        error={errors.name}
-                      />
-                      <Field
-                        label="Email"
-                        name="email"
-                        type="email"
-                        placeholder="jane@company.com"
-                        error={errors.email}
-                      />
-                      <Field
-                        label="Company"
-                        name="company"
-                        placeholder="Acme Inc."
-                        error={errors.company}
-                      />
-                      <Field
-                        label="Website (optional)"
-                        name="website"
-                        placeholder="acme.com"
-                        error={errors.website}
-                      />
+                      <Field label="Name" name="name" placeholder="Jane Doe" error={errors.name} />
+                      <Field label="Email" name="email" type="email" placeholder="jane@company.com" error={errors.email} />
+                      <Field label="Company" name="company" placeholder="Acme Inc." error={errors.company} />
+                      <Field label="Website (optional)" name="website" placeholder="acme.com" error={errors.website} />
                       <Field
                         label="Your Goal"
                         name="goal"
@@ -142,12 +97,8 @@ function ContactPage() {
                     </div>
 
                     <div className="mt-8 flex flex-wrap gap-3">
-                      <button type="submit" className="btn-primary">
-                        Send Your Message →
-                      </button>
-                      <Link to="/book-a-call" className="btn-outline">
-                        Book a Strategy Call
-                      </Link>
+                      <button type="submit" className="btn-primary">Send Your Message →</button>
+                      <Link to="/book-a-call" className="btn-outline">Book a Strategy Call</Link>
                     </div>
                   </>
                 )}
@@ -186,19 +137,14 @@ function ContactPage() {
               <div
                 className="rounded-3xl p-7 text-[var(--cream)]"
                 style={{
-                  background:
-                    "linear-gradient(135deg, var(--ink), color-mix(in oklab, var(--brand-blue) 35%, var(--ink)))",
+                  background: "linear-gradient(135deg, var(--ink), color-mix(in oklab, var(--brand-blue) 35%, var(--ink)))",
                 }}
               >
-                <h3 className="font-display text-2xl font-bold">
-                  Want immediate results?
-                </h3>
+                <h3 className="font-display text-2xl font-bold">Want immediate results?</h3>
                 <p className="mt-2 text-white/70 text-sm">
                   Book a focused strategy call and start accelerating growth.
                 </p>
-                <Link to="/book-a-call" className="btn-accent mt-5">
-                  Book Your Call →
-                </Link>
+                <Link to="/book-a-call" className="btn-accent mt-5">Book Your Call →</Link>
               </div>
             </Reveal>
           </div>
@@ -211,33 +157,19 @@ function ContactPage() {
 function Item({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
     <div className="flex items-center gap-3 text-sm">
-      <span className="h-8 w-8 rounded-lg bg-muted flex items-center justify-center">
-        {icon}
-      </span>
+      <span className="h-8 w-8 rounded-lg bg-muted flex items-center justify-center">{icon}</span>
       {label}
     </div>
   );
 }
 
 function Field({
-  label,
-  name,
-  placeholder,
-  type = "text",
-  textarea,
-  error,
-  className = "",
+  label, name, placeholder, type = "text", textarea, error, className = "",
 }: {
-  label: string;
-  name: string;
-  placeholder?: string;
-  type?: string;
-  textarea?: boolean;
-  error?: string;
-  className?: string;
+  label: string; name: string; placeholder?: string; type?: string;
+  textarea?: boolean; error?: string; className?: string;
 }) {
-  const cls =
-    "mt-1.5 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-transparent transition-all";
+  const cls = "mt-1.5 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--brand-blue)] focus:border-transparent transition-all";
   return (
     <label className={`block ${className}`}>
       <span className="text-sm font-semibold">{label}</span>

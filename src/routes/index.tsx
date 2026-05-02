@@ -30,25 +30,6 @@ import problemBurnout from "@/assets/problem-burnout.jpg";
 import problemScale from "@/assets/problem-scale.jpg";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "The Vertex Technologies — AI, Automation & Growth Systems" },
-      {
-        name: "description",
-        content:
-          "Build a self-running business with AI, automation and growth systems. Vertex helps ambitious companies scale faster with intelligent infrastructure.",
-      },
-      {
-        property: "og:title",
-        content: "The Vertex Technologies — Build a Self‑Running Business",
-      },
-      {
-        property: "og:description",
-        content:
-          "AI + Automation + Marketing + Strategy = Predictable scale. The Vertex Growth Engine for ambitious companies.",
-      },
-    ],
-  }),
   component: HomePage,
 });
 
@@ -275,7 +256,7 @@ function HomePage() {
                 eyebrow="Why most businesses struggle to scale"
                 title={
                   <>
-                    Effort isn’t the problem.{" "}
+                    Effort isn't the problem.{" "}
                     <span className="text-muted-foreground">Structure is.</span>
                   </>
                 }

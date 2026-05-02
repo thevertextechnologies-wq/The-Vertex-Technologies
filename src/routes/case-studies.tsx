@@ -7,21 +7,6 @@ import { SectionHeader } from "@/components/SectionHeader";
 import CTASection from "@/components/CTASection";
 
 export const Route = createFileRoute("/case-studies")({
-  head: () => ({
-    meta: [
-      { title: "Case Studies — The Vertex Technologies" },
-      {
-        name: "description",
-        content:
-          "Real results across AI, marketing and growth. See how Vertex helps businesses operate efficiently and scale predictably.",
-      },
-      { property: "og:title", content: "Case Studies — The Vertex Technologies" },
-      {
-        property: "og:description",
-        content: "Real outcomes from intelligent systems and growth strategy.",
-      },
-    ],
-  }),
   component: CaseStudiesPage,
 });
 
@@ -91,10 +76,7 @@ function CaseStudiesPage() {
                 <p className="mt-4 text-muted-foreground leading-relaxed">{c.body}</p>
                 <div className="mt-6 flex gap-3 flex-wrap">
                   {c.stats.map((s) => (
-                    <div
-                      key={s.k}
-                      className="rounded-xl border border-border px-4 py-2"
-                    >
+                    <div key={s.k} className="rounded-xl border border-border px-4 py-2">
                       <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
                         {s.k}
                       </p>
@@ -123,9 +105,7 @@ function CaseStudiesPage() {
             ].map((p) => (
               <StaggerItem key={p.t} className="card-tile p-6 bg-card">
                 <div className="h-2 w-12 rounded-full" style={{ background: p.c }} />
-                <p className="mt-4 font-display font-bold text-lg leading-tight">
-                  {p.t}
-                </p>
+                <p className="mt-4 font-display font-bold text-lg leading-tight">{p.t}</p>
               </StaggerItem>
             ))}
           </Stagger>

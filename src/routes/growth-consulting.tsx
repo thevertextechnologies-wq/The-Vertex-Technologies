@@ -8,21 +8,6 @@ import { SectionHeader } from "@/components/SectionHeader";
 import CTASection from "@/components/CTASection";
 
 export const Route = createFileRoute("/growth-consulting")({
-  head: () => ({
-    meta: [
-      { title: "Growth Consulting — The Vertex Technologies" },
-      {
-        name: "description",
-        content:
-          "Entrepreneurship and business growth consulting — strategic clarity, scalable systems, revenue optimization and execution discipline.",
-      },
-      { property: "og:title", content: "Growth Consulting — The Vertex Technologies" },
-      {
-        property: "og:description",
-        content: "From ideas to scalable, high-performance businesses.",
-      },
-    ],
-  }),
   component: GrowthPage,
 });
 
@@ -67,10 +52,7 @@ function GrowthPage() {
       <section className="py-24">
         <div className="container-x grid lg:grid-cols-2 gap-12">
           <div>
-            <SectionHeader
-              eyebrow="Where founders get stuck"
-              title="The pattern behind stalled growth."
-            />
+            <SectionHeader eyebrow="Where founders get stuck" title="The pattern behind stalled growth." />
             <Stagger className="mt-8 space-y-3">
               {[
                 "Unclear positioning in competitive markets",
@@ -114,18 +96,13 @@ function GrowthPage() {
 
       <section className="py-24 bg-[var(--surface)]">
         <div className="container-x">
-          <SectionHeader
-            eyebrow="Four focus areas"
-            title="What we help you build."
-          />
+          <SectionHeader eyebrow="Four focus areas" title="What we help you build." />
           <Stagger className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {focusAreas.map((f) => (
               <StaggerItem key={f.title} className="card-tile p-7 bg-card h-full">
                 <f.icon className="h-7 w-7" style={{ color: f.color }} />
                 <h3 className="mt-5 font-display text-2xl font-bold">{f.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                  {f.body}
-                </p>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{f.body}</p>
               </StaggerItem>
             ))}
           </Stagger>

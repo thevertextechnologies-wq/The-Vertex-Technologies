@@ -4,21 +4,6 @@ import PageLayout from "@/components/PageLayout";
 import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 
 export const Route = createFileRoute("/book-a-call")({
-  head: () => ({
-    meta: [
-      { title: "Book a Call — The Vertex Technologies" },
-      {
-        name: "description",
-        content:
-          "Schedule a focused strategy session with Vertex to explore actionable solutions for growth, automation and scalable systems.",
-      },
-      { property: "og:title", content: "Book a Strategy Call — Vertex" },
-      {
-        property: "og:description",
-        content: "A focused 30‑minute session to map your AI and growth roadmap.",
-      },
-    ],
-  }),
   component: BookCallPage,
 });
 
@@ -66,10 +51,7 @@ function BookCallPage() {
                   <Calendar className="h-5 w-5 text-[var(--brand-blue)]" />
                   <h2 className="font-display text-2xl font-bold">Select a date</h2>
                 </div>
-                <Stagger
-                  className="mt-6 grid grid-cols-7 gap-2"
-                  stagger={0.04}
-                >
+                <Stagger className="mt-6 grid grid-cols-7 gap-2" stagger={0.04}>
                   {days.map((d, i) => (
                     <StaggerItem
                       key={d.toISOString()}
